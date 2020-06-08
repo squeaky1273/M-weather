@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% include 'partials/navbar.html' %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>weather</title>
+</head>
+
+<body>
+  <center>
+    <img src="./static/m:weather.png" style ="width:150px;height:150px">
+    <h1>M/weather</h1>
+    <form method="post" class="col-md-6 col-md-offset-3">
+      <div class="input-group">
+        <input type="text" class="form-control" name="name" placeholder="Search city name...">
+        <div class="input-group-btn">
+          <button class="btn btn-primary" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+    <form>
+  </center>
+  <br>
+  <center>
+  {% if weather.city and weather.icon and weather.description and weather.temp and weather.humidity %}
+  <div class="col-md-6 col-md-offset-3">
+      <h3>{{weather.city}}</h3>
+      <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image">
+      <h4>Today's weather description : {{weather.description}}</h4>
+      <h4>Today's temperature : {{weather.temp}}</h4>
+      <h4>Today's humidity : {{weather.humidity}}</h4>
+  {% endif %}
+  </div>
+  </center>
+  <br>
+  {% for mood in moods %}
+    <div class='col-md-3'>
+      <div class="card">
+        <h2 style='font-size:20px;'><a href='/moods/{{ mood._id }}'>{{ mood.date }}</a></h2>
+        <h3 style='font-size:20px;'><a href='/moods/{{ mood._id }}'>{{ mood.city }}</a></h3>
+      </div>
+    </div>
+  {% endfor %}
+
+</body>
+
+{% endblock %}

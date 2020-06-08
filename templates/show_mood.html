@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% include 'partials/navbar.html' %}
+
+{% block content %}
+<!--Show Existing Log-->
+<!-- <h4><a href='/' style='font-size:20px'>Back to Home</a></h4> -->
+<br>
+<div class='table'>
+    <div class='col-sm-6 col-sm-offset-3'>
+      <h2 style='font-size:19.94px'>Mood Log: {{ mood.date }}</h2>
+      <br>
+      <table>
+        <head>
+        </head>
+        <body>
+          <tr>
+            <h2><th>City</th></h2>
+            <h2><th>Weather that Day</th></h2>
+            <h2><th>Mood</th></h2>
+          </tr>
+          <tr>
+            <h2><td>{{ mood.city }}</td></h2>
+            <h2><td>{{ mood.weather }}&#176;F</td></h2>
+            <h2><td>{{ mood.mood }}</td></h2>
+          </tr>
+        </body>
+      </table>
+
+      <p><form action='/moods/{{ mood._id }}/edit'>
+        <input type='hidden' name='_method' value='EDIT'>
+        <button class='btn btn-primary' type='submit' style='font-size:15px'>Edit Mood Log</button>
+      </form></p>
+      <p><form method='POST' action='/moods/{{ mood._id }}/delete'>
+        <input type='hidden' name='_method' value='DELETE'>
+        <button class='btn btn-primary' type='submit' style='font-size:15px; font-family:trajan'>Delete Mood Log</button>
+      </form></p>
+  </div>
+</div>
+{% endblock %}

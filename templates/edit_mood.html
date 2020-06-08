@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h4><a href='/' style='font-size:20px'>Back to Home</a></h4>
+<!--Save/Make Edits-->
+<legend style='color:#000000; font-size:25px'><center>Edit Mood Log</center></legend>
+<div class='row'>
+    <div class='col-sm-6 col-sm-offset-3'>
+        <form method='POST' action='/moods/{{mood._id}}'>
+            <input type='hidden' name='_method' value='PUT'/>
+            {% include 'partials/moods_form.html' %}
+            <br>
+            <!-- BUTTON -->
+            <div class='form-group'>
+                <h3 style='font-size:20px'><button class='btn btn-primary' type='submit'>Save Expense Log</button></h3>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

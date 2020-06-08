@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% include 'partials/navbar.html' %}
+
+<!-- Convert kelvin to celsius since it's used by more people; need to work something else to include fahrenheit -->
+<center>
+<h2>Insert a number to find the conversion:</h2>
+
+<h3><input id="k" onkeyup="convert('K')">&#176;k <!--&#8596;<input id="f" onkeyup="convert('F')">&#176;F--> &#8596; <input id="c" onkeyup="convert('C')">&#176;C</h3>
+
+<!-- <script>
+function convert(degree) {
+  var num;
+    if (degree == "F") {
+    num = (document.getElementById("f").value - 32) * 5/9 + 273.15;
+    document.getElementById("k").value = Math.round(num);
+  } else if (degree == "K") {
+    num = (document.getElementById("k").value - 273.15) * 9/5 + 32;
+    document.getElementById("f").value = Math.round(num);
+  }
+}
+</script> -->
+
+<script>
+  function convert(degree) {
+    var num;
+      if (degree == "K") {
+      num = document.getElementById("k").value - 273.15;
+      document.getElementById("c").value = Math.round(num);
+    } else if (degree == "C") {
+      num = document.getElementById("c").value + 273.15;
+      document.getElementById("k").value = Math.round(num);
+    }
+  }
+  </script>
+</center>
+
+{% endblock %}
